@@ -5,8 +5,8 @@ local widget = require("widget")
 
 local function handlePlayButtonEvent (event)
 	if ("ended" == event.phase ) then
-		composer.removeScene("maingame",false)
-		composer.gotoScene("maingame", {effect = "crossFade",time = 333})
+		composer.removeScene("game",false)
+		composer.gotoScene("game", {effect = "crossFade",time = 333})
 		end
 end
 
@@ -39,13 +39,17 @@ function scene:create(event)
 	
 	local playSinglePlayer = widget.newButton({
 		id="button1",
-		label = "Play Single Player",
-		width = 400,
-		height = 52,
-		onEvent = hhandlePlayButtonEvent
+		label = "Single Player",
+		labelColor = { default={ 0, 0, 0 }, over={ 1, 1, 1, 0.5 } },
+		fontSize = 38,
+		width = 300,
+		height = 100,
+		defaultFile="grey_button00.png",
+		overFile="grey_button01.png",
+		onEvent = handlePlayButtonEvent
 		})
-		playSinglePlayer.x = display.contentCenterX
-		playSinglePlayer.y = display.contentCenterY - 90
+		playSinglePlayer.x = display.contentCenterX - 150
+		playSinglePlayer.y = display.contentCenterY + 200
 		sceneGroup:insert(playSinglePlayer)
 		
 	end
